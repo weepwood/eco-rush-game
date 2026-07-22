@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>迁徙工坊：生态暴走版</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">自动化 + Roguelite 原型</p>
+        <h1>迁徙工坊：生态暴走版</h1>
+        <p class="subtitle">你负责选择发展方向，生态系统负责回收、加工、扩军与战斗。</p>
+      </div>
+      <button id="restartButton" class="button secondary" type="button">重新开始</button>
+    </header>
+
+    <section class="metrics">
+      <article class="metric-card">
+        <span>核心生命</span>
+        <strong id="hpValue">180</strong>
+      </article>
+      <article class="metric-card">
+        <span>生物质</span>
+        <strong id="biomassValue">0</strong>
+      </article>
+      <article class="metric-card">
+        <span>种子</span>
+        <strong id="seedValue">0</strong>
+      </article>
+      <article class="metric-card">
+        <span>战斗单位</span>
+        <strong id="armyValue">2</strong>
+      </article>
+      <article class="metric-card">
+        <span>连杀</span>
+        <strong id="comboValue">0</strong>
+      </article>
+      <article class="metric-card">
+        <span>波次</span>
+        <strong id="waveValue">1/4</strong>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="game-shell">
+        <canvas id="gameCanvas" width="760" height="440" aria-label="自动化 Roguelite 游戏画面"></canvas>
+        <div id="gameOverlay" class="game-overlay">
+          <div class="overlay-card">
+            <h2>让生态系统自己暴走</h2>
+            <p>尸体会被自动回收、加工、孵化，并不断繁殖新的炮塔和浮游植物。</p>
+            <button id="startButton" class="button primary" type="button">启动生态核心</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="doctrine-grid">
+        <button class="doctrine-button selected" data-doctrine="swarm" type="button">
+          <strong>蜂群优先</strong>
+          <small>自动扩建孵化巢，快速增加浮游植物</small>
+        </button>
+        <button class="doctrine-button" data-doctrine="artillery" type="button">
+          <strong>火力优先</strong>
+          <small>自动扩建射手花，强化范围清场</small>
+        </button>
+        <button class="doctrine-button" data-doctrine="industry" type="button">
+          <strong>工业优先</strong>
+          <small>自动扩建收集器和培育舱，加速循环</small>
+        </button>
+      </div>
+
+      <div class="toolbar">
+        <button id="burstButton" class="button primary" type="button">空格：生态爆发</button>
+        <span id="overdriveBadge" class="badge">超载能量 0%</span>
+      </div>
+
+      <div class="status-grid">
+        <article class="status-card">
+          <strong>自动回收</strong>
+          <span id="collectStatus">无人机等待目标</span>
+          <p>累计回收：<b id="collectValue">0</b></p>
+        </article>
+        <article class="status-card">
+          <strong>自动加工</strong>
+          <span id="processStatus">等待生物质</span>
+          <p>累计种子：<b id="processValue">0</b></p>
+        </article>
+        <article class="status-card">
+          <strong>自动扩军</strong>
+          <span id="hatchStatus">等待种子</span>
+          <p>累计孵化：<b id="hatchValue">2</b></p>
+        </article>
+        <article class="status-card">
+          <strong>自动扩张</strong>
+          <span id="expandStatus">生产进度 0/18</span>
+          <p>新增模块：<b id="expandValue">0</b></p>
+        </article>
+      </div>
+
+      <div class="tip">
+        <strong>操作：</strong>
+        选择发展方针，系统会自动建造和扩军。按空格或点击“生态爆发”进行全屏清场。
+      </div>
+
+      <p id="message" class="message" aria-live="polite">开局已经具备完整生产链，战斗开始后会自动运转。</p>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
